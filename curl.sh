@@ -1,3 +1,3 @@
 #!/bin/sh
 
-yum install openssl-devel curl
+yum -y install openssl-devel curl
