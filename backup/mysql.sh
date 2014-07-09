@@ -5,7 +5,7 @@ source "${SCRIPT_PATH}/cleanup_backup_dir.sh"
 
 DATABASE=$2
 USER="root"
-PASSWORD="e8fewv4rs7"
+PASSWORD=""
 BACKUP_DIR=$3
 DATE=`date +"%Y%m%d_%H%M%S"`
 FILENAME="${DATABASE}.${DATE}.dump"
@@ -20,7 +20,7 @@ fi
 if [ ! -d $BACKUP_DIR ]; then
   echo "Directory $BACKUP_DIR doesn't exists."
   mkdir -p $BACKUP_DIR
-  echo "Create $BACKUP_DIR." 
+  echo "Create $BACKUP_DIR."
 fi
 
 echo "Process mysqldump."
@@ -29,15 +29,15 @@ while [ ! -f $BACKUP_PATH ]; do
   sleep 1
   echo "backuping..."
 done
-sleep 2 
+sleep 2
 echo "mysqldump done."
 
-echo "Change current directory to $BACKUP_DIR." 
+echo "Change current directory to $BACKUP_DIR."
 cd $BACKUP_DIR
-echo "Make tar ball $FILENAME.tar.gz." 
+echo "Make tar ball $FILENAME.tar.gz."
 tar -zcf "${FILENAME}.tar.gz" "${FILENAME}"
 
-sleep 2 
+sleep 2
 while [ ! -f "${BACKUP_PATH}.tar.gz" ]; do
   sleep 1
   echo "sleep..."
